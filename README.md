@@ -4,14 +4,15 @@ Python program that can upload a .csv file and visualise data.
 
 ## Libraries:
 
-```
 Streamlit
 Pandas
 Plotly
-```
-### Installation
-pip install -r requirements.txt
 
+### Installation
+
+```
+pip install -r requirements.txt
+```
 
 ## Run the program
 
