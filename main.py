@@ -5,14 +5,24 @@ from choose_stat import *
 
 st.title("Import your .CSV file here:")
 st.markdown("---")
+st.write("How does it work?")
+lst = [
+    "Import a CSV file, don't forget to check that delimiter is set correctly and the columns are defined in the right format",
+    "Select the columns you want to work on (X and Y)",
+    "Done! ✔️",
+]
+for i in lst:
+    st.markdown("- " + i)
 file = st.file_uploader("Choose a .csv file", type=["csv"])
 
 if file is not None:
     col1, col2 = st.columns(2)
     try:
-        df = pd.read_csv(file, sep="[;,\t|:@]", engine="python")
+        df = pd.read_csv(file, engine="python")
     except Exception as e:
+        print("Error: Please check the file format or delimiter.")
         st.error(f"Error: {e}")
+        # exit(1)
 
     with col2:
         val_head = 5
