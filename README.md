@@ -3,14 +3,14 @@
 Python program that can upload a .csv file and visualise data.
 
 ## Project links:
-[link](datadisplay.streamlit.app)
-[]
+[Project link](datadisplay.streamlit.app)
+[Linkedin](https://www.linkedin.com/in/rahifhiba/)
 
 ## Libraries:
 
--Streamlit(streamlit.app)
--Pandas(https://pandas.pydata.org)
--Plotly Express(https://plotly.com/python/plotly-express/)
+- [Streamlit](streamlit.app)
+- [Pandas](https://pandas.pydata.org)
+- [Plotly Express](https://plotly.com/python/plotly-express/)
 
 ### Installation
 
@@ -23,11 +23,8 @@ pip install -r requirements.txt
 ```
 streamlit run main.py
 ```
-<!-- Project Name
-Introduction
-Must include link to your deployed site, final project blog article, author(s) LinkedIn
-Installation
-Usage
-Contributing
-Related projects
-Licensing -->
+
+## License
+
+[GPL-3.0](https://choosealicense.com/licenses/gpl-3.0/)
+

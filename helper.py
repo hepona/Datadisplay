@@ -39,3 +39,16 @@ def table_stat(df, col):
         }
         st.write(f"Statistics for {col}:")
         st.table(col_stats)
+
+
+def fix_coltype(df):
+    """fix column types"""
+    for col in df.columns:
+        if pd.api.types.is_string_dtype(df[col]):
+            try:
+                df[col] = pd.to_numeric(df[col])
+                print(col, "modified")
+            except:
+                pass
+    return df
+

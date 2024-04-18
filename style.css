@@ -34,13 +34,14 @@ ul {
   }
 
   li a:hover {
-    background-color: #111;
+    background-color: #ffe36a;
+    color:black
   }
 .navbar {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: red;
+    margin: 8px;
+    padding: 8px;
+    background-color: black;
   }
 .container{
     margin: -10px;
@@ -149,18 +150,14 @@ p {
 
 .link {
     color: #ffffff;
-    display: inline-block;
-    font-size: 25px;
+    /* display: inline-block;*/
+    font-size: 35px;
     border-radius: 100%;
+    padding: 100px  15px;
+
 }
 
 .links {
-    display: flex;
-    justify-content: center;
-    margin: 10px auto;
-    /* width: 100%; */
-}
-.links a {
-    padding: 0 15px;
+    text-align: center;
 
 }

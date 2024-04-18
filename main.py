@@ -1,13 +1,13 @@
 import streamlit as st
 import pandas as pd
 from chart import *
-from choose_stat import *
+from helper import *
 
 st.title("Import your .CSV file here:")
 st.markdown("---")
 st.write("How does it work?")
 lst = [
-    "Import a CSV file, don't forget to check that delimiter is set correctly and the columns are defined in the right format",
+    "Import a CSV file, and enter the string that represent Null value (if there is any)",
     "Select the columns you want to work on (X and Y)",
     "Done! ✔️",
 ]
@@ -21,51 +21,54 @@ if file is not None:
 
         df = pd.read_csv(file, engine="python", na_values= na_value)
         df = df.dropna()
+        df = fix_coltype(df)
+
+        with col2:
+            val_head = 5
+            num_line = st.slider(
+                "Number of lines", min_value=1, max_value=len(df), value=val_head
+            )
+            head = df.head(num_line)
+
+            x = st.selectbox("Select X value", df.columns)
+            y = st.selectbox("Select Y value", df.columns)
+            x_dtype = df[x].dtype
+            y_dtype = df[y].dtype
+            # print(x_dtype, y_dtype)
+
+            type_chart = st.selectbox(
+                "Select chart type",
+                [
+                    "Histogram",
+                    "Line plot",
+                    "Pie",
+                    "Boxplot",
+                    "KDE plot",
+                    "Bar plot",
+                    "Scatter plot",
+                    "Heatmap",
+                    "Violin plot",
+                ],
+            )
+            st.header(type_chart)
+            # print(len(head))
+            if len(head) < 2:
+                st.error(
+                    "Insufficient data points. Please choose a different dataset or adjust the number of lines.",
+                    icon="⚠️",
+                )
+            else:
+                choose(type_chart, head, x, y)
+            with col1:
+                st.header("Dataframe")
+                st.dataframe(head)
+                table_stat(df, x)
+                table_stat(df, y)
     except Exception as e:
         print("Error: Please check the file format or delimiter.")
         st.error(f"Error: {e}")
         # exit(1)
 
-    with col2:
-        val_head = 5
-        num_line = st.slider(
-            "Number of lines", min_value=1, max_value=len(df), value=val_head
-        )
-        head = df.head(num_line)
 
-        x = st.selectbox("Select X value", df.columns)
-        y = st.selectbox("Select Y value", df.columns)
-        x_dtype = df[x].dtype
-        y_dtype = df[y].dtype
-        # print(x_dtype, y_dtype)
-
-        type_chart = st.selectbox(
-            "Select chart type",
-            [
-                "Histogram",
-                "Line plot",
-                "Pie",
-                "Boxplot",
-                "KDE plot",
-                "Bar plot",
-                "Scatter plot",
-                "Heatmap",
-                "Violin plot",
-            ],
-        )
-        st.header(type_chart)
-        # print(len(head))
-        if len(head) < 2:
-            st.error(
-                "Insufficient data points. Please choose a different dataset or adjust the number of lines.",
-                icon="⚠️",
-            )
-        else:
-            choose(type_chart, head, x, y)
-        with col1:
-            st.header("Dataframe")
-            st.dataframe(head)
-            table_stat(df, x)
-            table_stat(df, y)
 
 
