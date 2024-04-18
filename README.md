@@ -8,7 +8,7 @@ Python program that can upload a .csv file and visualise data.
 
 ## Libraries:
 
-- [Streamlit](https://streamlit.app)
+- [Streamlit](https://streamlit.io)
 - [Pandas](https://pandas.pydata.org)
 - [Plotly Express](https://plotly.com/python/plotly-express/)
 
