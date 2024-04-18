@@ -3,12 +3,12 @@
 Python program that can upload a .csv file and visualise data.
 
 ## Project links:
-[Project link](datadisplay.streamlit.app)
+[Project link](https://datadisplay.streamlit.app)
 [Linkedin](https://www.linkedin.com/in/rahifhiba/)
 
 ## Libraries:
 
-- [Streamlit](streamlit.app)
+- [Streamlit](https://streamlit.app)
 - [Pandas](https://pandas.pydata.org)
 - [Plotly Express](https://plotly.com/python/plotly-express/)
 
