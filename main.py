@@ -14,11 +14,13 @@ lst = [
 for i in lst:
     st.markdown("- " + i)
 file = st.file_uploader("Choose a .csv file", type=["csv"])
-
+na_value = st.text_input('Enter the character that represent null value if there is any', '',placeholder='for exemple "?"')
 if file is not None:
     col1, col2 = st.columns(2)
     try:
-        df = pd.read_csv(file, engine="python")
+
+        df = pd.read_csv(file, engine="python", na_values= na_value)
+        df = df.dropna()
     except Exception as e:
         print("Error: Please check the file format or delimiter.")
         st.error(f"Error: {e}")
@@ -65,3 +67,5 @@ if file is not None:
             st.dataframe(head)
             table_stat(df, x)
             table_stat(df, y)
+
+
